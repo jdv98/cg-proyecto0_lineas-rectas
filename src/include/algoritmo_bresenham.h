@@ -1,0 +1,5 @@
+#ifndef ALGORITMO_BRESENHAM_H
+#define ALGORITMO_BRESENHAM_H
+
+
+#endif
