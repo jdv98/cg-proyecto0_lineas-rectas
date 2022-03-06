@@ -4,7 +4,7 @@ BIN_DIR=bin
 SRC_DIR=src
 
 #Archivos
-FILES = main fuerza_bruta algoritmo_inc algoritmo_inc_v2 algoritmo_bresenham
+FILES = main fuerza_bruta algoritmo_inc algoritmo_inc_v2 algoritmo_bresenham keys
 OBJECTS=$(patsubst %, $(OBJ_DIR)/%.o, $(FILES))
 OUTPUT=$(BIN_DIR)/main
 
