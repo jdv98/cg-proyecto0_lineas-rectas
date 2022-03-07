@@ -12,15 +12,10 @@
 #include "algoritmo_inc_v2.h"
 #include "algoritmo_bresenham.h"
 #include "keys.h"
+#include "dibujar.h"
 /******************/
 
-#define H_SIZE 400
-#define V_SIZE 400
-
-typedef struct {
-  double r;
-  double g;
-  double b;
-} COLOR;
+#define H_SIZE 100
+#define V_SIZE 100
 
 #endif

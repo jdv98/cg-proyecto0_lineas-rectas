@@ -4,7 +4,7 @@ BIN_DIR=bin
 SRC_DIR=src
 
 #Archivos
-FILES = main fuerza_bruta algoritmo_inc algoritmo_inc_v2 algoritmo_bresenham keys
+FILES = main fuerza_bruta algoritmo_inc algoritmo_inc_v2 algoritmo_bresenham keys dibujar
 OBJECTS=$(patsubst %, $(OBJ_DIR)/%.o, $(FILES))
 OUTPUT=$(BIN_DIR)/main
 
@@ -23,6 +23,9 @@ $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	gcc -c -MMD $< -o $@
 
 -include $(OBJ_DIR)/*.d
+
+run: $(OUTPUT)
+	./$(OUTPUT)
 
 clean:
 	rm -rf $(BIN_DIR) $(OBJ_DIR)
