@@ -15,7 +15,7 @@
 #include "dibujar.h"
 /******************/
 
-#define H_SIZE 100
-#define V_SIZE 100
+#define H_SIZE 300
+#define V_SIZE 300
 
 #endif

@@ -3,8 +3,9 @@
 COLOR **buffer;
 
 void draw_scene();
+void lineas();
 
-int main(int argc,char **argv)
+int main(int argc, char **argv)
 {
   int i, j;
 
@@ -52,4 +53,20 @@ void draw_scene()
   }
 
   glFlush();
+}
+
+void lineas()
+{
+  COLOR *color1 = malloc(sizeof(COLOR));
+  color1->r = 1.0;
+  color1->g = 1.0;
+  color1->b = 1.0;
+
+  /*
+  **Funciones de lineas**
+  funcion(50, 50, 100, 100, prueba, dibujar);
+  funcion(50, 50, 200, 50, prueba, dibujar);
+  funcion(200, 1, 200, 100, prueba, dibujar);
+  */
+  glutPostRedisplay();
 }
