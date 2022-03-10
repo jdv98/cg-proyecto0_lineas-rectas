@@ -34,6 +34,9 @@ int main(int argc, char **argv)
   glutDisplayFunc(draw_scene);
   glutKeyboardFunc(normal_keys);
   glutSpecialFunc(special_keys);
+
+  lineas();
+  
   glutMainLoop();
 }
 
@@ -64,9 +67,16 @@ void lineas()
 
   /*
   **Funciones de lineas**
-  funcion(50, 50, 100, 100, prueba, dibujar);
-  funcion(50, 50, 200, 50, prueba, dibujar);
-  funcion(200, 1, 200, 100, prueba, dibujar);
+  funcion(50, 50, 100, 100, color1, dibujar);
+  funcion(50, 50, 200, 50, color1, dibujar);
+  funcion(200, 1, 200, 100, color1, dibujar);
   */
+
+ /**Fuerza bruta**/
+
+  fuerza_bruta(50, 50, 100, 100, color1, dibujar);
+  fuerza_bruta(50, 50, 200, 50, color1, dibujar);
+  fuerza_bruta(200, 1, 200, 100, color1, dibujar);
+
   glutPostRedisplay();
 }

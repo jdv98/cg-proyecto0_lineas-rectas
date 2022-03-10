@@ -1,7 +1,6 @@
 #include "include/fuerza_bruta.h"
 
-void fuerza_bruta(int x0, int y0, int x1, int y1, double rc, double gc, double bc,
-                  void (*func_dibujar)(int, int, double, double, double))
+void fuerza_bruta(int x0, int y0, int x1, int y1, COLOR * color,void (*func_dibujar)(int,int,COLOR *))
 {
 
     long double m, b, yx;
@@ -32,14 +31,14 @@ void fuerza_bruta(int x0, int y0, int x1, int y1, double rc, double gc, double b
         for (int i = x0; i <= x1; i++)
         {
             yx = m * i + b;
-            (*func_dibujar)(i, (int)(round(yx)), rc, gc, bc);
+            (*func_dibujar)(i, (int)(round(yx)), color);
         }
     }
     else if (x0 == x1)
     {
         for (int i = y0; i <= y1; i++)
         {
-            (*func_dibujar)(x0, i, rc, gc, bc);
+            (*func_dibujar)(x0, i, color);
         }
     }
     else
@@ -47,7 +46,7 @@ void fuerza_bruta(int x0, int y0, int x1, int y1, double rc, double gc, double b
         for (int i = y0; i <= y1; i++)
         {
             yx = (i - b) / m;
-            (*func_dibujar)((int)(round(yx)), i, rc, gc, bc);
+            (*func_dibujar)((int)(round(yx)), i, color);
         }
     }
 }
