@@ -1,5 +1,5 @@
 #ifndef DIBUJAR_H
-#define DIBUJAR_h
+#define DIBUJAR_H
 
 typedef struct {
   double r;
@@ -10,6 +10,6 @@ typedef struct {
 extern COLOR **buffer;
 
 void dibujar(int x, int y, COLOR * color);
-void noDibujar(int x, int y, Color * color);
+void noDibujar(int x, int y, COLOR * color);
 
 #endif
