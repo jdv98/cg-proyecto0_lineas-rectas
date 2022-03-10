@@ -9,7 +9,7 @@ typedef struct {
 
 extern COLOR **buffer;
 
-void dibujar(int x, int y, double r, double g, double b);
-void noDibujar(int x, int y, double r, double g, double b);
+void dibujar(int x, int y, COLOR * color);
+void noDibujar(int x, int y, Color * color);
 
 #endif
