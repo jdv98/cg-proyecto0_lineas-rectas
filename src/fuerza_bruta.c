@@ -1,9 +1,10 @@
 #include "include/fuerza_bruta.h"
 
-void fuerza_bruta(int x0, int y0, int x1, int y1, COLOR * color,void (*func_dibujar)(int,int,COLOR *))
+void fuerza_bruta(int x0, int y0, int x1, int y1, COLOR *color, void (*func_dibujar)(int, int, COLOR *))
 {
 
-    long double m, b, yx;
+    long double m=0, b=0;
+    int yx=0;
 
     if (x1 < x0)
     {
@@ -25,38 +26,50 @@ void fuerza_bruta(int x0, int y0, int x1, int y1, COLOR * color,void (*func_dibu
 
     b = (long double)y0 - m * x0;
 
-
-    if (x0 >= y0 && x0 != x1)
-    {
-        for (int i = x0; i <= x1; i++)
-        {
-            yx = m * i + b;
-            (*func_dibujar)(i, (int)(round(yx)), color);
-        }
-    }
-    else if (x0 == x1)
+    if (x0 == x1 && y0 != y1)
     {
         for (int i = y0; i <= y1; i++)
         {
             (*func_dibujar)(x0, i, color);
         }
     }
-    else
+    else if (y0 == y1 && x0 != x1)
+    {
+        for (int i = x0; i <= x1; i++)
+        {
+            (*func_dibujar)(i, y0, color);
+        }
+    }
+    else if (b<0 && y0<y1)////Y
     {
         for (int i = y0; i <= y1; i++)
         {
-            yx = (i - b) / m;
-            (*func_dibujar)((int)(round(yx)), i, color);
+            yx =(int)(round((i - b) / m));
+            (*func_dibujar)(yx,i, color);
+        }
+    }
+    else if ((b<0 && y1<y0) || (m<-1 && y1<y0)  )////Y
+    {
+        for (int i = y1; i <= y0; i++)
+        {
+            yx =(int)(round((i - b) / m));
+            (*func_dibujar)(yx,i, color);
+        }
+    }
+    else {////X
+        for (int i = x0; i <= x1; i++)
+        {
+            yx =(int)(round(m * i + b));
+            (*func_dibujar)(i, yx, color);
         }
     }
 }
 
-
 /**
  * Casos:
- * 
+ *
  * fuerza_bruta(50, 50, 100, 100, 1.0, 1.0, 1.0, dibujar);
  * fuerza_bruta(50, 50, 200, 50, 1.0, 1.0, 1.0, dibujar);
  * fuerza_bruta(200, 1, 200, 100, 1.0, 1.0, 1.0, dibujar);
- * 
+ *
  */
