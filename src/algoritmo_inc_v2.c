@@ -21,6 +21,6 @@ void algoritmo_inc_v2(int x0, int y0, int x1, int y1, COLOR * color,void (*func_
 
 int max(int a, int b)
 {
-    int *r = a > b ? &a : &b;
-    return r > 0 ? *r : 1;
+    int r = a > b ? a : b;
+    return r != 0 ? r : 1;
 }
