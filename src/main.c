@@ -1,13 +1,16 @@
 #include "include/main.h"
+#include <time.h>
 
 COLOR **buffer;
 
 void draw_scene();
-void lineas();
+void prueba(void (*func)(int, int, int, int, COLOR *, void (*func_dibujar)(int, int, COLOR *)));
+COLOR *color1;
 
 int main(int argc, char **argv)
 {
   int i, j;
+  color1 = malloc(sizeof(COLOR));
 
   buffer = (COLOR **)malloc(H_SIZE * sizeof(COLOR *));
   for (i = 0; i < H_SIZE; i++)
@@ -35,7 +38,18 @@ int main(int argc, char **argv)
   glutKeyboardFunc(normal_keys);
   glutSpecialFunc(special_keys);
 
-  lineas();
+  color1->r = 0.0;
+  color1->g = 0.0;
+  color1->b = 1.0;
+  prueba(fuerza_bruta);
+  color1->r = 0.0;
+  color1->g = 1.0;
+  color1->b = 0.0;
+  prueba(algoritmo_inc);
+  color1->r = 1.0;
+  color1->g = 0.0;
+  color1->b = 0.0;
+  prueba(algoritmo_inc_v2);
   
   glutMainLoop();
 }
@@ -58,25 +72,26 @@ void draw_scene()
   glFlush();
 }
 
-void lineas()
+void prueba(void (*func)(int, int, int, int, COLOR *, void (*func_dibujar)(int, int, COLOR *)))
 {
-  COLOR *color1 = malloc(sizeof(COLOR));
-  color1->r = 1.0;
-  color1->g = 1.0;
-  color1->b = 1.0;
+  /*****************/
+  /*Prueba de caida*/
+  clock_t begin = clock();
 
-  /*
-  **Funciones de lineas**
-  funcion(50, 50, 100, 100, color1, dibujar);
-  funcion(50, 50, 200, 50, color1, dibujar);
-  funcion(200, 1, 200, 100, color1, dibujar);
-  */
 
- /**Fuerza bruta**/
+  double c, s;
+  int cx,sy;
+  for (size_t i = 0; i <= 360; i++)
+  {
+    c = cos(i) * 70;
+    s = sin(i) * 70;
+    cx=(int)(500+(int)(round(c)));
+    sy=(int)(500+(int)(round(s)));
+    (*func)(cx,sy, 500, 500,color1,dibujar);
+  }
 
-  fuerza_bruta(50, 50, 100, 100, color1, dibujar);
-  fuerza_bruta(50, 50, 200, 50, color1, dibujar);
-  fuerza_bruta(200, 1, 200, 100, color1, dibujar);
-
+  clock_t end = clock();
+  double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+  printf("TIME===%lf\n",time_spent);
   glutPostRedisplay();
 }
