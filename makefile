@@ -20,7 +20,7 @@ $(OUTPUT): $(OBJECTS)
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	mkdir -p obj
-	gcc -c -MMD $< -o $@
+	gcc -g -c -MMD $< -o $@
 
 -include $(OBJ_DIR)/*.d
 
