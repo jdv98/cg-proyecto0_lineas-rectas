@@ -8,10 +8,10 @@ void algoritmo_inc_v2(int x0, int y0, int x1, int y1, COLOR * color,void (*func_
 
     long double x = x0,
                 y = y0,
-                mx = (x1 - x0) / width,
-                my = (y1 - y0) / width;
+                mx = (long double)((x1 - x0) / width),
+                my = (long double)((y1 - y0) / width);
 
-    for (int i = 0; i < width; i++)
+    for (int i = 0; i <= width; i++)
     {
         (*func_dibujar)((int)(round(x)), (int)(round(y)), color);
         x += mx;
