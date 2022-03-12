@@ -6,7 +6,7 @@ void fuerza_bruta(int x0, int y0, int x1, int y1, COLOR *color, void (*func_dibu
     long double m=0, b=0;
     int yx=0;
 
-    if (x1 < x0)
+    if (x1 < x0 || (x1 <= x0 && y1<y0))
     {
         int tmpx = x0,
             tmpy = y0;
@@ -15,7 +15,7 @@ void fuerza_bruta(int x0, int y0, int x1, int y1, COLOR *color, void (*func_dibu
         x1 = tmpx;
         y1 = tmpy;
     }
-    else if (x0 == x1)
+    if (x0 == x1)
     {
         m = (long double)(y1 - y0);
     }
