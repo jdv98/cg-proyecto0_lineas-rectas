@@ -2,14 +2,16 @@
 
 int max(int a, int b);
 
-void algoritmo_inc_v2(int x0, int y0, int x1, int y1, COLOR * color,void (*func_dibujar)(int,int,COLOR *))
+void algoritmo_inc_v2(int x0, int y0, int x1, int y1, COLOR *color, void (*func_dibujar)(int, int, COLOR *))
 {
-    int width = max(abs(x1 - x0), abs(y1 - y0));
+    int x1_x0 = x1 - x0,
+        y1_y0 = y1 - y0;
+    int width = max(abs(x1_x0), abs(y1_y0));
 
-    long double x = x0,
-                y = y0,
-                mx = (long double)((x1 - x0) / width),
-                my = (long double)((y1 - y0) / width);
+    long double x = (long double)x0,
+                y = (long double)y0,
+                mx = x1_x0 / (long double)width,
+                my = y1_y0 / (long double)width;
 
     for (int i = 0; i <= width; i++)
     {
