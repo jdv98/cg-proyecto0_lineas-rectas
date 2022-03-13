@@ -52,10 +52,10 @@ void cuadrante1(int x0, int y0, int x1, int y1, COLOR *color, void (*func_dibuja
 
     if (delta_x > delta_y) // octante1 /5
     {
-        while (xp < x1)
+        while (xp <= x1)
         {
             (*func_dibujar)((xp), (yp), color);
-            if (d <= 0)
+            if (d < 0)
             {
                 xp++;
                 d = d + Delta_E;
