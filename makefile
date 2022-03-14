@@ -25,7 +25,7 @@ $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 -include $(OBJ_DIR)/*.d
 
 run: $(OUTPUT)
-	./$(OUTPUT)
+	./$(OUTPUT) $(r) $(l) $(v)
 
 clean:
 	rm -rf $(BIN_DIR) $(OBJ_DIR)

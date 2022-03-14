@@ -12,6 +12,7 @@ typedef struct
     int y1;
 } LINEAS;
 
+extern int cant_lineas,cant_veces;
 extern LINEAS* lineas;
 
 int crearLineasAleatorias(int limite,int numlineas);
