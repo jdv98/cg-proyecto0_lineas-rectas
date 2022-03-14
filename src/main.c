@@ -61,16 +61,7 @@ int main(int argc, char **argv)
 void draw_scene()
 {
 
-  if (pixel_cambiado_x != -1)
-  {
-    glColor3f(buffer[pixel_cambiado_x][pixel_cambiado_y].r, buffer[pixel_cambiado_x][pixel_cambiado_y].g, buffer[pixel_cambiado_x][pixel_cambiado_y].b);
-    glBegin(GL_POINTS);
-    glVertex2i(pixel_cambiado_x, pixel_cambiado_y);
-    glEnd();
-    pixel_cambiado_x=-1;
-  }
-  else
-  {
+  
     int i, j;
 
     for (i = 0; i < H_SIZE; i++)
@@ -83,7 +74,7 @@ void draw_scene()
         glEnd();
       }
     }
-  }
+  
 
   glFlush();
 }
