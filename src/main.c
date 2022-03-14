@@ -4,26 +4,36 @@
 COLOR **buffer;
 COLOR *color1;
 
-void draw_scene();
-// void prueba(void (*func)(int, int, int, int, COLOR *, void (*func_dibujar)(int, int, COLOR *)));
-int pixel_cambiado_x,pixel_cambiado_y;
+int resolucion, cant_lineas, cant_veces;
+
 int main(int argc, char **argv)
 {
-  pixel_cambiado_x=-1;
-  pixel_cambiado_y=-1;
-  
+  if (argc < 4 || argc > 4)
+  {
+    (void)fprintf(stdout, "Usage: %s <resolucion> <# lineas> <# veces>\n", argv[0]);
+    exit(0);
+  }
+  else if (argc == 4)
+  {
+    resolucion = atoi(argv[1]);
+    cant_lineas = atoi(argv[2]);
+    cant_veces = atoi(argv[3]);
+  }
+
+  crearLineasAleatorias(resolucion, cant_lineas);
+
   int i, j;
   color1 = malloc(sizeof(COLOR));
 
-  buffer = (COLOR **)malloc(H_SIZE * sizeof(COLOR *));
-  for (i = 0; i < H_SIZE; i++)
+  buffer = (COLOR **)malloc(resolucion * sizeof(COLOR *));
+  for (i = 0; i < resolucion; i++)
   {
-    buffer[i] = (COLOR *)malloc(V_SIZE * sizeof(COLOR));
+    buffer[i] = (COLOR *)malloc(resolucion * sizeof(COLOR));
   }
 
-  for (i = 0; i < H_SIZE; i++)
+  for (i = 0; i < resolucion; i++)
   {
-    for (j = 0; j < V_SIZE; j++)
+    for (j = 0; j < resolucion; j++)
     {
       buffer[i][j].r = 1.0;
       buffer[i][j].g = 1.0;
@@ -33,10 +43,10 @@ int main(int argc, char **argv)
 
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-  glutInitWindowSize(H_SIZE, V_SIZE);
+  glutInitWindowSize(resolucion, resolucion);
   glutCreateWindow("Mesa Example");
   glClear(GL_COLOR_BUFFER_BIT);
-  gluOrtho2D(-0.5, H_SIZE + 0.5, -0.5, V_SIZE + 0.5);
+  gluOrtho2D(-0.5, resolucion + 0.5, -0.5, resolucion + 0.5);
   glutDisplayFunc(draw_scene);
   glutKeyboardFunc(normal_keys);
   glutSpecialFunc(special_keys);
@@ -60,21 +70,17 @@ int main(int argc, char **argv)
 
 void draw_scene()
 {
-
-  
-    int i, j;
-
-    for (i = 0; i < H_SIZE; i++)
+  int i, j;
+  for (i = 0; i < resolucion; i++)
+  {
+    for (j = 0; j < resolucion; j++)
     {
-      for (j = 0; j < V_SIZE; j++)
-      {
-        glColor3f(buffer[i][j].r, buffer[i][j].g, buffer[i][j].b);
-        glBegin(GL_POINTS);
-        glVertex2i(i, j);
-        glEnd();
-      }
+      glColor3f(buffer[i][j].r, buffer[i][j].g, buffer[i][j].b);
+      glBegin(GL_POINTS);
+      glVertex2i(i, j);
+      glEnd();
     }
-  
+  }
 
   glFlush();
 }

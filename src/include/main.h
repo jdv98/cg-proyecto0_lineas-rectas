@@ -13,9 +13,9 @@
 #include "algoritmo_bresenham.h"
 #include "keys.h"
 #include "dibujar.h"
+#include "lineas_aleatorias.h"
 /******************/
 
-#define H_SIZE 1000
-#define V_SIZE 1000
+extern int resolucion;
 
 #endif
