@@ -4,7 +4,7 @@ BIN_DIR=bin
 SRC_DIR=src
 
 #Archivos
-FILES = main fuerza_bruta algoritmo_inc algoritmo_inc_v2 algoritmo_bresenham keys dibujar
+FILES = main fuerza_bruta algoritmo_inc algoritmo_inc_v2 algoritmo_bresenham keys dibujar lineas_aleatorias
 OBJECTS=$(patsubst %, $(OBJ_DIR)/%.o, $(FILES))
 OUTPUT=$(BIN_DIR)/main
 
