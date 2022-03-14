@@ -47,15 +47,13 @@ void cuadrante1(int x0, int y0, int x1, int y1, COLOR *color, void (*func_dibuja
     xp = x0;
     yp = y0;
 
-    d = 2*delta_y-delta_x;
-    //
-
+    (*func_dibujar)((xp), (yp), color);
     if (delta_x > delta_y) // octante1 /5
     {
-        while (xp <= x1)
+        d = 2*delta_y-delta_x;
+        while (xp < x1)
         {
-            (*func_dibujar)((xp), (yp), color);
-            if (d < 0)
+            if (d <= 0)
             {
                 xp++;
                 d = d + Delta_E;
@@ -66,12 +64,15 @@ void cuadrante1(int x0, int y0, int x1, int y1, COLOR *color, void (*func_dibuja
                 yp++;
                 d = d + Delta_NE;
             }
+            (*func_dibujar)((xp), (yp), color);
         }
     }
     else //               octante2 / 6
     {
+        d = delta_y-2*delta_x;
         while (yp < y1)
         {
+            
             if (d > 0)
             {
                 yp++;
@@ -98,10 +99,11 @@ void cuadrante2(int x0, int y0, int x1, int y1, COLOR *color, void (*func_dibuja
     //
     xp = x0;
     yp = y0;
-    d = (2*delta_y) + delta_x;
 
+    (*func_dibujar)((xp), (yp), color);
     if (delta_x > abs(delta_y)) // octante  8/4
     {
+        d = (2*delta_y) + delta_x;
         while (xp < x1)
         {
             if (d > 0)
@@ -121,10 +123,10 @@ void cuadrante2(int x0, int y0, int x1, int y1, COLOR *color, void (*func_dibuja
     }
     else // Octante 7 / 3
     {
+        d = delta_y + 2*delta_x;
         while (yp > y1)
         {
-            (*func_dibujar)((xp), (yp), color);
-            if (d <= 0)
+            if (d < 0)
             {
                 yp--;
                 d = d + Delta_S;
@@ -135,6 +137,7 @@ void cuadrante2(int x0, int y0, int x1, int y1, COLOR *color, void (*func_dibuja
                 yp--;
                 d = d + Delta_SE;
             }
+            (*func_dibujar)((xp), (yp), color);
         }
     }
 }
