@@ -1,6 +1,6 @@
 #include "include/algoritmo_bresenham.h"
 
-int delta_x, delta_y, d, xp, yp, Delta_E, Delta_S, Delta_N, Delta_NE;
+int delta_x, delta_y, d, xp, yp, Delta_E, Delta_S, Delta_SE, Delta_N, Delta_NE;
 
 void cuadrante1(int x0, int y0, int x1, int y1, COLOR *color, void (*func_dibujar)(int, int, COLOR *));
 void cuadrante2(int x0, int y0, int x1, int y1, COLOR *color, void (*func_dibujar)(int, int, COLOR *));
