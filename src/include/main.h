@@ -16,6 +16,4 @@
 #include "lineas_aleatorias.h"
 /******************/
 
-extern int resolucion;
-
 #endif

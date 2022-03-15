@@ -1,14 +1,10 @@
 #include "include/keys.h"
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <GL/glut.h>
-#include "malloc.h"
 
 void idles(void)
 {
-  for (int i = 0; i < 1000; i++)
+  for (int i = 0; i < resolucion; i++)
   {
-    for (int j = 0; j < 1000; j++)
+    for (int j = 0; j < resolucion; j++)
     {
       glColor3f(buffer[i][j].r, buffer[i][j].g, buffer[i][j].b);
       glBegin(GL_POINTS);
@@ -20,11 +16,11 @@ void idles(void)
   glFlush();
 }
 
-void imprimirCompletos(void (*func)(int, int, int, int, COLOR *, void (*func_dibujar)(int, int, COLOR *)),char * algoritmo);
+void imprimirCompletos(int repetir_veces, void (*func)(int, int, int, int, COLOR *, void (*func_dibujar)(int, int, COLOR *)), COLOR *color, char *algoritmo);
 
-void imprimirLinea(void (*func)(int, int, int, int, COLOR *, void (*func_dibujar)(int, int, COLOR *)),char * algoritmo);
+void imprimirLinea(void (*func)(int, int, int, int, COLOR *, void (*func_dibujar)(int, int, COLOR *)), COLOR *color, char *algoritmo);
 
-void noImprimir(void (*func)(int, int, int, int, COLOR *, void (*func_dibujar)(int, int, COLOR *)),char * algoritmo);
+void noImprimir(void (*func)(int, int, int, int, COLOR *, void (*func_dibujar)(int, int, COLOR *)), COLOR *color, char *algoritmo);
 
 void normal_keys(unsigned char key, int x, int y)
 {
@@ -35,62 +31,54 @@ void normal_keys(unsigned char key, int x, int y)
     break;
 
   case 49:
-    color1->r = (double)0.0;
-    color1->g = (double)0.0;
-    color1->b = (double)1.0;
-    imprimirCompletos(fuerza_bruta,"Algoritmo fuerza bruta");
-    color1->r = (double)1.0;
-    color1->g = (double)0.0;
-    color1->b = (double)0.0;
-    imprimirCompletos(algoritmo_inc,"Algoritmo incremetal");
-    color1->r = (double)0.0;
-    color1->g = (double)1.0;
-    color1->b = (double)0.0;
-    imprimirCompletos(algoritmo_inc_v2,"Algoritmo incremental v2");
-    color1->r = (double)0.0;
-    color1->g = (double)0.0;
-    color1->b = (double)0.0;
-    imprimirCompletos(bresenham,"Algoritmo de Bresenham");
-
+    printf("\n\n________________________________________\n_Impresion de las lineas con repeticion_\n________________________________________\n");
+    imprimirCompletos(cant_veces,fuerza_bruta,color_fuerza_bruta,"Algoritmo fuerza bruta");
+    imprimirCompletos(cant_veces,algoritmo_inc,color_algoritmo_inc,"Algoritmo incremetal");
+    imprimirCompletos(cant_veces,algoritmo_inc_v2,color_algoritmo_inc_v2,"Algoritmo incremental 2");
+    imprimirCompletos(cant_veces,bresenham,color_bresenham, "Algoritmo de Bresenham");
+    printf("\n________________________________________\n________________________________________\n________________________________________\n");
     break;
-    case 50:
-    color1->r = (double)0.0;
-    color1->g = (double)0.0;
-    color1->b = (double)1.0;
-    imprimirLinea(fuerza_bruta,"Algoritmo fuerza bruta");
-    color1->r = (double)1.0;
-    color1->g = (double)0.0;
-    color1->b = (double)0.0;
-    imprimirLinea(algoritmo_inc,"Algoritmo incremetal");
-    color1->r = (double)0.0;
-    color1->g = (double)1.0;
-    color1->b = (double)0.0;
-    imprimirLinea(algoritmo_inc_v2,"Algoritmo incremental v2");
-    color1->r = (double)0.0;
-    color1->g = (double)0.0;
-    color1->b = (double)0.0;
-    imprimirLinea(bresenham,"Algoritmo de Bresenham");
+  case 50:
+    printf("\n\n________________________________________\n___________Impresion por linea__________\n________________________________________\n");
+    imprimirLinea(fuerza_bruta,color_fuerza_bruta,"Algoritmo fuerza bruta");
+    imprimirLinea(algoritmo_inc,color_algoritmo_inc,"Algoritmo incremetal");
+    imprimirLinea(algoritmo_inc_v2,color_algoritmo_inc_v2,"Algoritmo incremental 2");
+    imprimirLinea(bresenham,color_bresenham, "Algoritmo de Bresenham");
+    printf("\n________________________________________\n________________________________________\n________________________________________\n");
     break;
 
-    case 51:
-    color1->r = (double)0.0;
-    color1->g = (double)0.0;
-    color1->b = (double)1.0;
-    noImprimir(fuerza_bruta,"Algoritmo fuerza bruta");
-    color1->r = (double)1.0;
-    color1->g = (double)0.0;
-    color1->b = (double)0.0;
-    noImprimir(algoritmo_inc,"Algoritmo incremetal");
-    color1->r = (double)0.0;
-    color1->g = (double)1.0;
-    color1->b = (double)0.0;
-    noImprimir(algoritmo_inc_v2,"Algoritmo incremental v2");
-    color1->r = (double)0.0;
-    color1->g = (double)0.0;
-    color1->b = (double)0.0;
-    noImprimir(bresenham,"Algoritmo de Bresenham");
-    
+  case 51:
+    printf("\n\n________________________________________\n____Tiempos de ejecucion sin impresion____\n________________________________________\n");
+    noImprimir(fuerza_bruta,color_fuerza_bruta,"Algoritmo fuerza bruta");
+    noImprimir(algoritmo_inc,color_algoritmo_inc,"Algoritmo incremetal");
+    noImprimir(algoritmo_inc_v2,color_algoritmo_inc_v2,"Algoritmo incremental 2");
+    noImprimir(bresenham,color_bresenham, "Algoritmo de Bresenham");
+    printf("\n________________________________________\n________________________________________\n________________________________________\n");
 
+    break;
+  case 52:
+    printf("\n\n________________________________________\n_Impresion de las lineas sin repeticion_\n________________________________________\n");
+    imprimirCompletos(1,fuerza_bruta,color_fuerza_bruta,"Algoritmo fuerza bruta");
+    imprimirCompletos(1,algoritmo_inc,color_algoritmo_inc,"Algoritmo incremetal");
+    imprimirCompletos(1,algoritmo_inc_v2,color_algoritmo_inc_v2,"Algoritmo incremental 2");
+    imprimirCompletos(1,bresenham,color_bresenham, "Algoritmo de Bresenham");
+    printf("\n________________________________________\n________________________________________\n________________________________________\n");
+    break;
+
+  case 53:
+    for (int i = 0; i < resolucion; i++)
+    {
+      for (int j = 0; j < resolucion; j++)
+      {
+        buffer[i][j].r = 0.0;
+        buffer[i][j].g = 0.0;
+        buffer[i][j].b = 0.0;
+      }
+    }
+    idles();
+    break;
+  case 54:
+    crearLineasAleatorias(resolucion,cant_lineas);
     break;
 
   default:
@@ -102,50 +90,50 @@ void special_keys(int key, int x, int y)
 {
 }
 
-void imprimirCompletos(void (*func)(int, int, int, int, COLOR *, void (*func_dibujar)(int, int, COLOR *)),char * algoritmo)
+void imprimirCompletos(int repetir_veces, void (*func)(int, int, int, int, COLOR *, void (*func_dibujar)(int, int, COLOR *)), COLOR *color, char *algoritmo)
 {
   clock_t begin = clock();
 
-  for (size_t t = 0; t < cant_veces; t++)
+  for (size_t t = 0; t < repetir_veces; t++)
   {
     for (size_t i = 0; i < cant_lineas; i++)
     {
-      (*func)(lineas[i].x0, lineas[i].y0, lineas[i].x1, lineas[i].y1, color1, dibujar);
+      (*func)(lineas[i].x0, lineas[i].y0, lineas[i].x1, lineas[i].y1, color, dibujar);
     }
   }
   idles();
 
   clock_t end = clock();
   double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-  printf("%s\t\tTiempo con impresion completa=>%lf\n",algoritmo, time_spent);  
+  printf("%s\t\tTiempo=>%lf\n", algoritmo, time_spent);
 }
 
-void imprimirLinea(void (*func)(int, int, int, int, COLOR *, void (*func_dibujar)(int, int, COLOR *)),char * algoritmo)
+void imprimirLinea(void (*func)(int, int, int, int, COLOR *, void (*func_dibujar)(int, int, COLOR *)), COLOR *color, char *algoritmo)
 {
   clock_t begin = clock();
   for (size_t i = 0; i < cant_lineas; i++)
   {
-    (*func)(lineas[i].x0, lineas[i].y0, lineas[i].x1, lineas[i].y1, color1, dibujar);
+    (*func)(lineas[i].x0, lineas[i].y0, lineas[i].x1, lineas[i].y1, color, dibujar);
     idles();
   }
 
   clock_t end = clock();
   double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-  printf("%s\t\tTiempo con impresion por linea=>%lf\n",algoritmo, time_spent);  
+  printf("%s\t\tTiempo=>%lf\n", algoritmo, time_spent);
 }
 
-void noImprimir(void (*func)(int, int, int, int, COLOR *, void (*func_dibujar)(int, int, COLOR *)),char * algoritmo)
+void noImprimir(void (*func)(int, int, int, int, COLOR *, void (*func_dibujar)(int, int, COLOR *)), COLOR *color, char *algoritmo)
 {
   clock_t begin = clock();
   for (size_t t = 0; t < cant_veces; t++)
   {
     for (size_t i = 0; i < cant_lineas; i++)
     {
-      (*func)(lineas[i].x0, lineas[i].y0, lineas[i].x1, lineas[i].y1, color1, noDibujar);
+      (*func)(lineas[i].x0, lineas[i].y0, lineas[i].x1, lineas[i].y1, color, noDibujar);
     }
   }
 
   clock_t end = clock();
   double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-  printf("%s\t\tTiempo sin imprimir=>%lf\n",algoritmo, time_spent);  
+  printf("%s\t\tTiempo=>%lf\n", algoritmo, time_spent);
 }

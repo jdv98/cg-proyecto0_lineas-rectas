@@ -7,10 +7,8 @@ int crearLineasAleatorias(int limite,int numlineas)
     // Generar Matrix
     lineas = (LINEAS *)malloc(numlineas * sizeof(LINEAS));
     limite--;
-
-    time_t t;
    
-   srand((unsigned) time(&t));
+   srand((unsigned) time(NULL));
 
     for (int x= 0; x <numlineas; x++)
     {

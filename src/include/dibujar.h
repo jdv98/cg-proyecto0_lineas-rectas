@@ -8,8 +8,12 @@ typedef struct {
 } COLOR;
 
 extern COLOR **buffer;
+extern COLOR *color_fuerza_bruta,
+             *color_algoritmo_inc,
+             *color_algoritmo_inc_v2,
+             *color_bresenham;
 
-extern int pixel_cambiado_x,pixel_cambiado_y;
+extern int resolucion;
 
 void dibujar(int x, int y, COLOR * color);
 void noDibujar(int x, int y, COLOR * color);
