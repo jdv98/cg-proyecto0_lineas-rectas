@@ -10,8 +10,8 @@ void algoritmo_inc_v2(int x0, int y0, int x1, int y1, COLOR *color, void (*func_
 
     long double x = (long double)x0,
                 y = (long double)y0,
-                mx = x1_x0 / (long double)width,
-                my = y1_y0 / (long double)width;
+                mx = (long double)x1_x0 /width,
+                my = (long double)y1_y0 /width;
 
     for (int i = 0; i <= width; i++)
     {
@@ -23,6 +23,8 @@ void algoritmo_inc_v2(int x0, int y0, int x1, int y1, COLOR *color, void (*func_
 
 int max(int a, int b)
 {
-    int r = a > b ? a : b;
-    return r != 0 ? r : 1;
+    if(a>b){
+        return a != 0 ? a : 1;
+    }
+    return b != 0 ? b : 1;
 }

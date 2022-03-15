@@ -8,12 +8,13 @@ void fuerza_bruta(int x0, int y0, int x1, int y1, COLOR *color, void (*func_dibu
 
     if (x1 < x0 || (x1 <= x0 && y1<y0))
     {
-        int tmpx = x0,
-            tmpy = y0;
-        x0 = x1;
-        y0 = y1;
-        x1 = tmpx;
-        y1 = tmpy;
+        x0 += x1;
+        x1 = x0 - x1;
+        x0 -= x1;
+
+        y0 += y1;
+        y1 = y0 - y1;
+        y0 -= y1;
     }
 
     int x = (x1 - x0),
