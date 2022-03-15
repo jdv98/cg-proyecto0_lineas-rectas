@@ -22,6 +22,20 @@ void imprimirLinea(void (*func)(int, int, int, int, COLOR *, void (*func_dibujar
 
 void noImprimir(void (*func)(int, int, int, int, COLOR *, void (*func_dibujar)(int, int, COLOR *)), COLOR *color, char *algoritmo);
 
+void imprimirLineaPorAlgortimo();
+
+void reset(){
+  for (int i = 0; i < resolucion; i++)
+    {
+      for (int j = 0; j < resolucion; j++)
+      {
+        buffer[i][j].r = 0.0;
+        buffer[i][j].g = 0.0;
+        buffer[i][j].b = 0.0;
+      }
+    }
+}
+
 void normal_keys(unsigned char key, int x, int y)
 {
   switch (key)
@@ -66,18 +80,16 @@ void normal_keys(unsigned char key, int x, int y)
     break;
 
   case 53:
-    for (int i = 0; i < resolucion; i++)
-    {
-      for (int j = 0; j < resolucion; j++)
-      {
-        buffer[i][j].r = 0.0;
-        buffer[i][j].g = 0.0;
-        buffer[i][j].b = 0.0;
-      }
-    }
+    printf("\n\n________________________________________\n_Impresion de las lineas por algoritmo_\n________________________________________\n");
+    imprimirLineaPorAlgortimo();
+    printf("\n________________________________________\n________________________________________\n________________________________________\n");
+    break;
+
+  case 54:
+    reset();
     idles();
     break;
-  case 54:
+  case 55:
     crearLineasAleatorias(resolucion,cant_lineas);
     break;
 
@@ -120,6 +132,29 @@ void imprimirLinea(void (*func)(int, int, int, int, COLOR *, void (*func_dibujar
   clock_t end = clock();
   double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
   printf("%s\t\tTiempo=>%lf\n", algoritmo, time_spent);
+}
+
+void imprimirLineaPorAlgortimo()
+{
+  clock_t begin = clock();
+  for (size_t i = 0; i < cant_lineas; i++)
+  {
+    fuerza_bruta(lineas[i].x0, lineas[i].y0, lineas[i].x1, lineas[i].y1, color_fuerza_bruta, dibujar);
+    idles();
+    algoritmo_inc(lineas[i].x0, lineas[i].y0, lineas[i].x1, lineas[i].y1, color_algoritmo_inc, dibujar);
+    idles();
+    algoritmo_inc_v2(lineas[i].x0, lineas[i].y0, lineas[i].x1, lineas[i].y1, color_algoritmo_inc_v2, dibujar);
+    idles();
+    bresenham(lineas[i].x0, lineas[i].y0, lineas[i].x1, lineas[i].y1, color_bresenham, dibujar);
+    idles();
+    reset();
+    idles();
+    
+  }
+
+  clock_t end = clock();
+  double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+  printf("Tiempo general=>%lf\n", time_spent);
 }
 
 void noImprimir(void (*func)(int, int, int, int, COLOR *, void (*func_dibujar)(int, int, COLOR *)), COLOR *color, char *algoritmo)

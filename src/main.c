@@ -88,9 +88,9 @@ void init_colors(){
   color_algoritmo_inc_v2 = malloc(sizeof(COLOR));
   color_bresenham = malloc(sizeof(COLOR));
 
-  color_fuerza_bruta->r = (double)0.0;
-  color_fuerza_bruta->g = (double)0.0;
-  color_fuerza_bruta->b = (double)0.0;
+  color_fuerza_bruta->r = (double)1.0;
+  color_fuerza_bruta->g = (double)1.0;
+  color_fuerza_bruta->b = (double)1.0;
 
   color_algoritmo_inc->r = (double)1.0;
   color_algoritmo_inc->g = (double)0.0;
@@ -100,7 +100,7 @@ void init_colors(){
   color_algoritmo_inc_v2->g = (double)1.0;
   color_algoritmo_inc_v2->b = (double)0.0;
 
-  color_bresenham->r = (double)0.5;
-  color_bresenham->g = (double)1.0;
-  color_bresenham->b = (double)0.5;
+  color_bresenham->r = (double)0.7;
+  color_bresenham->g = (double)0.7;
+  color_bresenham->b = (double)0.0;
 }
