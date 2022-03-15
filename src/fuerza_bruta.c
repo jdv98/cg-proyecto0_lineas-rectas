@@ -65,7 +65,7 @@ void fuerza_bruta(int x0, int y0, int x1, int y1, COLOR *color, void (*func_dibu
     else if(!x0_y1) {////X
         for (int i = x0; i <= x1; i++)
         {
-            yx =(int)(floor(m * i + b));
+            yx =(int)(round(m * i + b));
             (*func_dibujar)(i, yx, color);
         }
     }
