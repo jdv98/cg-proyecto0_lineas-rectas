@@ -147,9 +147,6 @@ void imprimirLineaPorAlgortimo()
     idles();
     bresenham(lineas[i].x0, lineas[i].y0, lineas[i].x1, lineas[i].y1, color_bresenham, dibujar);
     idles();
-    reset();
-    idles();
-    
   }
 
   clock_t end = clock();
