@@ -2,7 +2,7 @@
 #define LINEAS_ALEATORIAS_H
 
 #include <stdlib.h>
-#include <stdio.h>
+#include <time.h>
 
 typedef struct
 {

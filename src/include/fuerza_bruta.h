@@ -2,6 +2,7 @@
 #define FUERZA_BRUTRA_H
 
 #include <math.h>
+#include <stdlib.h>
 #include "dibujar.h"
 
 void fuerza_bruta(int x0, int y0, int x1, int y1, COLOR * color,
