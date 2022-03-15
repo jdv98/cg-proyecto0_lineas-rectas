@@ -71,7 +71,7 @@ void cuadrante1(int x0, int y0, int x1, int y1, COLOR *color, void (*func_dibuja
         d = delta_y-(2*delta_x);
         while (yp < y1)
         {
-            
+
             if (d > 0)
             {
                 yp++;
